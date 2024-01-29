@@ -1,0 +1,12 @@
+.yarnContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.yarnDetails {
+    justify-content: space-between;
+    border: 1px solid black;
+    margin: 10px;
+
+}
