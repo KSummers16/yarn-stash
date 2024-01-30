@@ -11,7 +11,7 @@ export const NavBar = () => {
             <Link to='/new-yarn'>Add New Yarn</Link>
         </li>
         <li className="navbar-item">
-            <Link>Profile</Link>
+            <Link to='/profile'>Profile</Link>
         </li>
         {localStorage.getItem("yarn_user") ? (
             <li className="navbar-item">

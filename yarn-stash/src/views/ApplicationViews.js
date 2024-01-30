@@ -7,6 +7,7 @@ import { YarnWeight } from "../components/yarn/yarnWeight.js"
 import { AddNewYarn } from "../components/yarn/NewYarn.js"
 import { YarnColor } from "../components/yarn/yarnColor.js"
 import { YarnCompany } from "../components/yarn/yarnCompany.js"
+import { UserProfile } from "../components/user/user.js"
 
 
 export const ApplicationViews = () => {
@@ -35,6 +36,7 @@ export const ApplicationViews = () => {
                 <Route path="yarn-color" element={<YarnColor colorChoice={colorChoice}/>} />
                 <Route path="yarn-company" element={<YarnCompany companyChoice={companyChoice}/>} />
                 <Route path="new-yarn" element={<AddNewYarn />} />
+                <Route path="profile" element={<UserProfile />} />
 
 
 

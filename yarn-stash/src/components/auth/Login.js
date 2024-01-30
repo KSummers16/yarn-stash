@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import { getUserByEmail } from "../services/userService.js"
 
 export const Login = () => {
@@ -52,6 +52,9 @@ export const Login = () => {
                     </fieldset>
                 </form>
             </section>
+            <section className="register-link">
+        <Link to="/register">Not a member yet?</Link>
+      </section>
         </main>
     )
 }

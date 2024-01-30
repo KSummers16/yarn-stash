@@ -4,6 +4,8 @@ import "./yarn.css"
 
 export const AllYarn = () => {
     const [showAllYarns, setShowAllYarns] = useState([])
+    const [filteredYarns, setFilteredYarns] = useState([])
+    const [searchTerm, setSearchTerm] = useState("")
 
 
     useEffect (()=>{
@@ -12,11 +14,29 @@ export const AllYarn = () => {
         })
     },[])
 
+    useEffect(()=>{
+        const foundYarns = showAllYarns.filter(yarn=>
+            yarn.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+            yarn.color.toLowerCase().includes(searchTerm.toLowerCase()
+            )
+        )
+        setFilteredYarns(foundYarns)
+    },[searchTerm, showAllYarns])
 
     return (
+        <>
+        <div className="searchBar">
+            <input
+            onChange={(event)=>{
+                setSearchTerm(event.target.value)
+            }}
+            type="text"
+            placeholder="search yarn"
+            />
+        </div>
         <div className="yarnContainer">
             <section className="yarnCard">
-                {showAllYarns.map(yarn => {
+                {filteredYarns.map(yarn => {
                     return (<div className="yarn" key={yarn.id}>
                         <div className="yarnDetails">
                             <div className="yarnCompany">{yarn.companyId}</div>
@@ -29,5 +49,6 @@ export const AllYarn = () => {
                 })}
             </section>
         </div>
+        </>
     )
 }
