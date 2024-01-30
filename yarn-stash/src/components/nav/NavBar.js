@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "./NavBar.css"
 
 
@@ -13,9 +13,26 @@ export const NavBar = () => {
         <li className="navbar-item">
             <Link>Profile</Link>
         </li>
-        <li className="navbar-item">
-            <Link>Logout</Link>
-        </li>
+        {localStorage.getItem("yarn_user") ? (
+            <li className="navbar-item">
+            <Link 
+                to=""
+                onClick={()=>{
+                    localStorage.removeItem("yarn_user")
+                    Navigate("/login", { replace: true })
+                }}
+                >Logout</Link>
+                </li>
+        ):(
+            ""
+        )}
+
+
+
+
+
+
+
         <li className="navbar-item">
             <Link to='/'>Home</Link>
         </li>
