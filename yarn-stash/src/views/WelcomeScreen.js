@@ -2,13 +2,13 @@ import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { getAllWeights, getAllCompanies, getAllColors } from "../components/services/arrayService.js"
 
-export const WelcomeScreen = () => {
+export const WelcomeScreen = ({weightChoice, setWeightChoice, colorChoice, setColorChoice, companyChoice, setCompanyChoice}) => {
     const navigate = useNavigate()
     const [menuSelection, setMenuSelection] = useState("")
     const [allWeights, setAllWeights] = useState([])
     const [allCompanies, setAllCompanies] = useState([])
     const [allColorOptions, setAllColorOptions] = useState([])
-    const [weightChoice, setWeightChoice] = useState('')
+    
 
   useEffect(()=>{
     getAllWeights().then(weightsArray=>{
@@ -28,7 +28,17 @@ export const WelcomeScreen = () => {
     })
  },[])
 
+ const handleWeightClick = () => {
+    navigate("/yarn-weight", {state: {weightChoice}})
+ }
  
+ const handleColorClick = () =>{
+    navigate("/yarn-color", {state: {colorChoice}})
+ }
+
+ const handleCompanyClick = () => {
+    navigate("/yarn-company", {state: {companyChoice}})
+ }
 
     return (
         <section>
@@ -45,29 +55,28 @@ export const WelcomeScreen = () => {
                     {allWeights.map(weight=>{
                         return<><option value={weight.id}>{weight.name}</option></>
                     })}
-                </select><Link to="/yarn-weight" weightChoice={weightChoice}><button>Submit</button></Link></>
+                </select><button onClick={handleWeightClick}>Submit</button></>
             ):(
                 ""
             )
             } 
              {menuSelection==="company" ? (
-                <select className="filter-menu">
+                <><select className="filter-menu" onChange={e=>setCompanyChoice(parseInt(e.target.value))}>
                     <option value="">Choose a Manufacturer</option>
                     {allCompanies.map(company=>{
                         return<><option value={company.id}>{company.name}</option></>
                     })}
-                </select>
-            ):(
+                    </select><button onClick={handleCompanyClick}>Submit</button></>
+             ):(
                 ""
-            )
-            }
+             )}
             {menuSelection==="colorFamily" ? (
-                <select className="filter-menu">
+                <><select className="filter-menu" onChange={e=>setColorChoice(parseInt(e.target.value))}>
                     <option value="">Choose a Color Option</option>
                     {allColorOptions.map(color=>{
                         return<><option value={color.id}>{color.name}</option></>
                     })}
-                </select>
+                </select><button onClick={handleColorClick}>Submit</button></>
             ):(
                 ""
             )}

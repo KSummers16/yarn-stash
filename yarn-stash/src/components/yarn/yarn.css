@@ -10,3 +10,15 @@
     margin: 10px;
 
 }
+
+.home {
+    background-position:center;
+    background-repeat:no-repeat;
+    /* padding: 2rem; */
+    border: 1px solid transparent;
+    cursor: pointer;
+    position: absolute;
+    top: 40px;
+    right: 20px;
+   
+}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getAllYarns } from "../services/yarnService.js"
 
-export const YarnWeight = ({weightChoice}) => {
+export const YarnCompany = ({companyChoice}) => {
     const [allYarns, setAllYarns] = useState([])
     const [filterYarns, setFilterYarns] = useState(0)
     const [showFilteredYarns, setShowFilteredYarns]= useState([])
@@ -13,18 +13,18 @@ export const YarnWeight = ({weightChoice}) => {
     },[])
 
     useEffect(()=> {
-        setFilterYarns(weightChoice)
-    },[weightChoice])
+        setFilterYarns(companyChoice)
+    },[companyChoice])
 
 
     useEffect(()=>{
-        if (weightChoice){
+        if (companyChoice){
             getAllYarns().then(yarnArray=>{
-            const yarnWeight = yarnArray.filter(yarn=>yarn.weightId===filterYarns)
+            const yarnWeight = yarnArray.filter(yarn=>yarn.companyId===filterYarns)
             setShowFilteredYarns(yarnWeight)
         })
         }
-    },[filterYarns, weightChoice])
+    },[filterYarns, companyChoice])
 
 
     return (<>
