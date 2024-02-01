@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { getAllWeights, getAllCompanies, getAllColors } from "../components/services/arrayService.js"
 
 export const WelcomeScreen = ({weightChoice, setWeightChoice, colorChoice, setColorChoice, companyChoice, setCompanyChoice}) => {

@@ -16,7 +16,9 @@ export const Login = () => {
                 localStorage.setItem(
                     "yarn_user",
                     JSON.stringify({
-                        id: user.id
+                        id: user.id,
+                        name: user.name,
+                        email: user.email
                     })
                 )
                 navigate("/")

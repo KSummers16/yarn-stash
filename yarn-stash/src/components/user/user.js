@@ -1,33 +1,35 @@
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { getUserByUserId } from "../services/userService.js"
 
 
-export const UserProfile = (userId) => {
-    const [currentUser, setCurrentUser] = useState({})
-    
+export const UserProfile = ({currentUser}) => {
+   const [userProfile, setUserProfile] = useState({})
 
+    const { userId } = useParams()
+    
+    
 
     useEffect(()=>{
-        getUserByUserId(userId).then((data)=>{
-            const userObj = data[0]
-            setCurrentUser(userObj)
+        getUserByUserId(userId).then((dataArr)=>{
+            
+            setUserProfile(dataArr)
         })
     },[userId])
-    
-    
-    
+  
+   
     
     return (
         <>
         <div>
             <div className="user-info">Name</div>
-            <div>{currentUser.name}</div>
+            <div>{userProfile.name}</div>
         </div>
         <div>
             <div className="user-info">Email</div>
-            <div>{currentUser.email}</div>
+            <div>{userProfile.email}</div>
         </div>
+        <Link to={`/update-user/${userId}`}><button>Update Profile</button></Link>
         </>
     )
 }
