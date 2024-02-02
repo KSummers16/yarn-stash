@@ -25,11 +25,11 @@ export const YarnDetails = () => {
     return (
         <>
         
-        <div className="yarn-details-info">Company: {yarnDetails.companyId}</div>
-                            <div className="yarn-details-info">{yarnDetails.name}</div>
+        <div className="yarn-details-info">Brand: {yarnDetails.company?.name}</div>
+                            <div className="yarn-details-info">Line: {yarnDetails.name}</div>
                             <div className="yarn-details-info">{yarnDetails.color}</div>
-                            <div className="yarn-details-info">Color Family: {yarnDetails.colorFamilyId}</div>
-                            <div className="yarn-details-info">Weight: {yarnDetails.weightId}</div>
+                            <div className="yarn-details-info">Color Palette: {yarnDetails.colorFamily?.name}</div>
+                            <div className="yarn-details-info">Weight: {yarnDetails.weightId}-{yarnDetails.weight?.name}</div>
                             <div className="yarn-details-info">Skeins: {yarnDetails.amount}</div>
         
         <Link to={`/edit-yarn/${yarnId}`}><button>Update Yarn</button></Link>

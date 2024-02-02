@@ -3,19 +3,20 @@ import { useNavigate } from "react-router-dom"
 import { getAllColors, getAllCompanies, getAllWeights } from "../services/arrayService.js"
 import { SaveYarn } from "../services/yarnService.js"
 
-export const AddNewYarn = () => {
+export const AddNewYarn = ({currentUser}) => {
     const navigate = useNavigate()
     const [weights, setWeights] = useState([])
     const [company, setCompany] = useState([])
     const [color, setColor]= useState([])
 
     const [yarn, setYarn] = useState({
-        weightId: "",
-        companyId: "",
+        weightId: '',
+        companyId: '',
         name: "",
-        colorFamilyId: "",
+        colorFamilyId: '',
         color: "",
-        amount: ""
+        amount: '',
+        userId: currentUser.id
     })
 
 
@@ -37,14 +38,25 @@ export const AddNewYarn = () => {
         })
     },[])
 
-    const NewYarnCreated = (evt) => {
-        const {id, value} = evt.target;
-        const parsedValue= id === 'userId' ? parseInt(value, 10) : value.trim()
-            setYarn((prevYarn)=> ({
-                ...prevYarn,
-                [id]: id === 'userId' ? parseInt(value, 10): parsedValue,
-     }))
+    // const NewYarnCreated = (evt) => {
+    //     const {id, value} = evt.target;
+    //     const parsedValue= id === 'userId' ? parseInt(value, 10) : value.trim()
+    //         setYarn((prevYarn)=> ({
+    //             ...prevYarn,
+    //             [id]: id === 'userId' ? parseInt(value, 10): parsedValue,
+    //  }))
 
+    // }
+
+
+    const NewYarnCreated = (evt) => {
+        const { id, value } = evt.target;
+        const parsedValue = id === 'amount' || id === 'userId' ? parseInt(value, 10) : value.trim();
+
+        setYarn((prevYarn)=> ({
+            ...prevYarn,
+            [id]: parsedValue
+        }))
     }
 
 
@@ -85,7 +97,7 @@ export const AddNewYarn = () => {
                     onChange={NewYarnCreated}
                     type="text"
                     id="name"
-                    placeholder="What is the name of your yarn?"
+                    placeholder="What is the brand of the yarn?"
                     required
                     />
                 </div>

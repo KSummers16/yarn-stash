@@ -43,11 +43,11 @@ export const ApplicationViews = () => {
                 colorChoice={colorChoice} setColorChoice={setColorChoice}
                 companyChoice={companyChoice} setCompanyChoice={setCompanyChoice}
                 />}/>
-                <Route path="yarns" element={<AllYarn />} />
-                <Route path="yarn-weight" element={<YarnWeight weightChoice={weightChoice}/>} />
-                <Route path="yarn-color" element={<YarnColor colorChoice={colorChoice}/>} />
-                <Route path="yarn-company" element={<YarnCompany companyChoice={companyChoice}/>} />
-                <Route path="new-yarn" element={<AddNewYarn />} />
+                <Route path="yarns" element={<AllYarn currentUser={currentUser}/>} />
+                <Route path="yarn-weight" element={<YarnWeight currentUser={currentUser} weightChoice={weightChoice}/>} />
+                <Route path="yarn-color" element={<YarnColor currentUser={currentUser} colorChoice={colorChoice}/>} />
+                <Route path="yarn-company" element={<YarnCompany currentUser={currentUser} companyChoice={companyChoice}/>} />
+                <Route path="new-yarn" element={<AddNewYarn currentUser={currentUser}/>} />
                 <Route path="profile/:userId" element={<UserProfile currentUser={currentUser}/>} />
                 <Route path="update-user/:userId" element={<UserForm currentUser={currentUser}/>} />
                 <Route path="yarns/:yarnId" element={<YarnDetails />} />

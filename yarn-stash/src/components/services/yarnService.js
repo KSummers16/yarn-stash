@@ -1,5 +1,5 @@
 export const getAllYarns = () => {
-    return fetch(`http://localhost:8088/yarns`).then(res=>res.json())
+    return fetch(`http://localhost:8088/yarns/?_expand=company&_expand=colorFamily&_expand=weight`).then(res=>res.json())
 }
 
 
@@ -7,9 +7,13 @@ export const getYarnByWeightId = (weightId) => {
     return fetch(`http://localhost:8088/yarns/${weightId}`).then((res)=>res.json())
 }
 
+export const getYarnByUserId = (userId) => {
+    return fetch(`http://localhost:8088/yarns/${userId}`)
+}
+
 
 export const getYarnByYarnId = (id) => {
-    return fetch(`http://localhost:8088/yarns/${id}`).then((res)=>res.json())
+    return fetch(`http://localhost:8088/yarns/${id}?_expand=company&_expand=colorFamily&_expand=weight`).then((res)=>res.json())
 }
 
 export const updateYarn = (yarn) => {
@@ -43,23 +47,3 @@ export const deleteTheYarn = (id)=> {
 }
 
 
-
-// export const deleteTheYarn = (yarn) => {
-//     const deleteState = {
-//         "id": yarn.id,
-//         "weightId": yarn.weightId,
-//         "companyId": yarn.companyId,
-//         "name": yarn.name,
-//         "colorFamilyId": yarn.colorFamilyId,
-//         "color": yarn.color,
-//         "userId": yarn.userId,
-//         "amount": yarn.amount
-//     }
-//     return fetch(`http://localhost:8088/yarns/${yarn.id}`, {
-//         method: "DELETE",
-//         headers: {
-//             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify(deleteState)
-//     })
-// }

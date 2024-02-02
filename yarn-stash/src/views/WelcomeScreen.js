@@ -41,13 +41,18 @@ export const WelcomeScreen = ({weightChoice, setWeightChoice, colorChoice, setCo
  }
 
     return (
-        <section>
-            <h2>Filter Yarn by...</h2>
+        <section className="main">
+            <h1>Welcome to Yarn Stash!</h1>
+                <p className="intro">This is a special place for anyone that deals with yarn crafts! Keep track on how much yarn you have at home so you always know what's on hand.</p>
+                <img className="yarn-wall" src="https://t3.ftcdn.net/jpg/02/11/27/44/360_F_211274437_jw4zj9wtsgw6eMGqA9en3gbh6DBwdlLC.jpg" alt="yarn-wall"/> 
+
+
+            <h3>Filter Yarn by...</h3>
             <select className="initial-dropdown" onChange={e=>setMenuSelection(e.target.value)}>
                 <option value="">Choose a filter</option>
                 <option value="weight">Weight</option>
-                <option value="company">Manufacturer</option>
-                <option value="colorFamily">Color Option</option>
+                <option value="company">Brand</option>
+                <option value="colorFamily">Color Palette</option>
             </select>
             {menuSelection==="weight" ? (
                <> <select className="filter-menu" onChange={e=>setWeightChoice(parseInt(e.target.value))}>
@@ -62,7 +67,7 @@ export const WelcomeScreen = ({weightChoice, setWeightChoice, colorChoice, setCo
             } 
              {menuSelection==="company" ? (
                 <><select className="filter-menu" onChange={e=>setCompanyChoice(parseInt(e.target.value))}>
-                    <option value="">Choose a Manufacturer</option>
+                    <option value="">Choose a Brand</option>
                     {allCompanies.map(company=>{
                         return<><option value={company.id}>{company.name}</option></>
                     })}
@@ -72,7 +77,7 @@ export const WelcomeScreen = ({weightChoice, setWeightChoice, colorChoice, setCo
              )}
             {menuSelection==="colorFamily" ? (
                 <><select className="filter-menu" onChange={e=>setColorChoice(parseInt(e.target.value))}>
-                    <option value="">Choose a Color Option</option>
+                    <option value="">Choose a Color Palette</option>
                     {allColorOptions.map(color=>{
                         return<><option value={color.id}>{color.name}</option></>
                     })}

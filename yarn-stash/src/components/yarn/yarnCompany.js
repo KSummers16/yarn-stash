@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react"
 import { getAllYarns } from "../services/yarnService.js"
 import { getAllCompanies } from "../services/arrayService.js"
+import { useNavigate } from "react-router-dom"
 
-export const YarnCompany = ({companyChoice}) => {
+export const YarnCompany = ({companyChoice, currentUser}) => {
     const [allYarns, setAllYarns] = useState([])
     const [filterYarns, setFilterYarns] = useState(0)
     const [showFilteredYarns, setShowFilteredYarns]= useState([])
     const [allCompanyOptions, setAllCompanyOptions]= useState([])
     const [newCompanyChoice, setNewCompanyChoice]= useState(0)
+    const navigate = useNavigate()
 
 
     useEffect(()=>{
@@ -17,10 +19,14 @@ export const YarnCompany = ({companyChoice}) => {
     },[])
 
     useEffect(()=>{
-        getAllYarns().then(yarnArray=> {
-            setAllYarns(yarnArray)
-        })
-    },[])
+        if (currentUser){
+            getAllYarns().then(yarnArray=>{
+                const userYarns = yarnArray.filter(yarn=>yarn.userId===currentUser.id)
+                setAllYarns(userYarns)
+            })
+        }
+    },[currentUser])
+    
 
     useEffect(()=>{
         setFilterYarns(newCompanyChoice)
@@ -52,7 +58,7 @@ export const YarnCompany = ({companyChoice}) => {
 
     return (<>
     <select className="filter-menu" onChange={e=>setNewCompanyChoice(parseInt(e.target.value))}>
-                    <option value="">Choose a Manufacturer</option>
+                    <option value="">Choose a Brand</option>
                     {allCompanyOptions.map(company=>{
                         return<><option value={company.id}>{company.name}</option></>
                     })}
@@ -62,12 +68,13 @@ export const YarnCompany = ({companyChoice}) => {
                 {showFilteredYarns.map(yarn => {
                     return (<div className="yarn" key={yarn.id}>
                         <div className="yarnDetails">
-                        <div className="yarn-details-info">Company: {yarn.companyId}</div>
-                            <div className="yarn-details-info">{yarn.name}</div>
+                        <div className="yarn-details-info">Brand: {yarn.company.name}</div>
+                            <div className="yarn-details-info">Line: {yarn.name}</div>
                             <div className="yarn-details-info">{yarn.color}</div>
-                            <div className="yarn-details-info">Color Family: {yarn.colorFamilyId}</div>
-                            <div className="yarn-details-info">Weight: {yarn.weightId}</div>
+                            <div className="yarn-details-info">Color Palette: {yarn.colorFamilyId}</div>
+                            <div className="yarn-details-info">Weight: {yarn.weightId}-{yarn.weight.name}</div>
                             <div className="yarn-details-info">Skeins: {yarn.amount}</div>
+                            <button onClick={()=>{navigate(`/yarns/${yarn.id}`)}}>Edit Yarn</button>
                         </div>
                     </div>)
                 })}

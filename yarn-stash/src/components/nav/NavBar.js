@@ -10,6 +10,9 @@ export const NavBar = ({currentUser}) => {
 
     return <ul className="navbar">
         <li className="navbar-item">
+            <Link to='/'>Home</Link>
+        </li>
+        <li className="navbar-item">
             <Link to='/yarns'>Show All Yarn</Link>
         </li>
         <li className="navbar-item">
@@ -31,15 +34,5 @@ export const NavBar = ({currentUser}) => {
         ):(
             ""
         )}
-
-
-
-
-
-
-
-        <li className="navbar-item">
-            <Link to='/'>Home</Link>
-        </li>
     </ul>
 }

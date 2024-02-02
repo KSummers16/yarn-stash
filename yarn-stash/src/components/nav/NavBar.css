@@ -1,7 +1,7 @@
 .navbar {
     display: flex;
     flex-wrap: nowrap;
-    background-color: cyan;
+    background-color: lightcoral;
     margin: 0;
     width: 100%;
     padding: 0.5rem;
@@ -11,15 +11,14 @@
     flex-basis: 20%;
     list-style-type: none;
     text-align: center;
+    /* border: 2px solid black; */
+    margin: 2px;
+
     
   }
 
 
-  .navbar-link {
-    text-decoration: none;
-    font-family: "Quicksand", sans-serif;
-    letter-spacing: 1px;
-  }
+  
 
   .navbar-logout {
     margin-left: auto;
@@ -27,4 +26,9 @@
 
   .navbar-link:hover {
     color: var(--primary);
+  }
+
+  a {
+    text-decoration: none;
+    color:darkblue;
   }
