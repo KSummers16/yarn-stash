@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
-import { getYarnByYarnId } from "../services/yarnService.js"
+import { deleteTheYarn, getYarnByYarnId } from "../services/yarnService.js"
 
 
 export const YarnDetails = () => {
    const [yarnDetails, setYarnDetails] = useState({})
+   const navigate= useNavigate()
 
     const { yarnId } = useParams()
     
@@ -16,11 +17,14 @@ export const YarnDetails = () => {
             setYarnDetails(dataArr)
         })
     },[yarnId])
-  
+
+
+   
    
     
     return (
         <>
+        
         <div className="yarn-details-info">Company: {yarnDetails.companyId}</div>
                             <div className="yarn-details-info">{yarnDetails.name}</div>
                             <div className="yarn-details-info">{yarnDetails.color}</div>
@@ -29,6 +33,10 @@ export const YarnDetails = () => {
                             <div className="yarn-details-info">Skeins: {yarnDetails.amount}</div>
         
         <Link to={`/edit-yarn/${yarnId}`}><button>Update Yarn</button></Link>
+
+        <button className="delete-btn btn-warning" onClick={()=>{deleteTheYarn(yarnId).then(()=>{navigate('/')})}}>Delete</button>
+
         </>
+        
     )
 }

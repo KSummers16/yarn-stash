@@ -32,3 +32,34 @@ export const SaveYarn = (newYarnObject) => {
     }
     return fetch(`http://localhost:8088/yarns`, postOptions)
 }
+
+
+
+
+export const deleteTheYarn = (id)=> {
+    return fetch(`http://localhost:8088/yarns/${id}`,{
+        method: "DELETE"
+    })
+}
+
+
+
+// export const deleteTheYarn = (yarn) => {
+//     const deleteState = {
+//         "id": yarn.id,
+//         "weightId": yarn.weightId,
+//         "companyId": yarn.companyId,
+//         "name": yarn.name,
+//         "colorFamilyId": yarn.colorFamilyId,
+//         "color": yarn.color,
+//         "userId": yarn.userId,
+//         "amount": yarn.amount
+//     }
+//     return fetch(`http://localhost:8088/yarns/${yarn.id}`, {
+//         method: "DELETE",
+//         headers: {
+//             "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify(deleteState)
+//     })
+// }
