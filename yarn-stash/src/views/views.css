@@ -1,9 +1,32 @@
 .main {
-    padding: 20px,
+    padding: 20px;
 }
 
 
+.filter-box {
+    display: flex;
+}
+
+.filter {
+    display: grid;
+    margin: 20px;
+    border: 1px solid black;
+    flex-direction: column;
+    padding: 10px;
+    width: 50%;
+
+
+}
+
+.kitten {
+    width: 175px;
+    justify-self: center;
+}
+
 
 .yarn-wall {
-
+    display: flex;
+    width: 50%;
+    justify-content: end;
+    margin: 20px;
 }

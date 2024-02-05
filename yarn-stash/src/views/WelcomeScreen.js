@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { getAllWeights, getAllCompanies, getAllColors } from "../components/services/arrayService.js"
+import "./views.css"
 
 export const WelcomeScreen = ({weightChoice, setWeightChoice, colorChoice, setColorChoice, companyChoice, setCompanyChoice}) => {
     const navigate = useNavigate()
@@ -44,9 +45,10 @@ export const WelcomeScreen = ({weightChoice, setWeightChoice, colorChoice, setCo
         <section className="main">
             <h1>Welcome to Yarn Stash!</h1>
                 <p className="intro">This is a special place for anyone that deals with yarn crafts! Keep track on how much yarn you have at home so you always know what's on hand.</p>
-                <img className="yarn-wall" src="https://t3.ftcdn.net/jpg/02/11/27/44/360_F_211274437_jw4zj9wtsgw6eMGqA9en3gbh6DBwdlLC.jpg" alt="yarn-wall"/> 
 
 
+            <div className="filter-box">
+                <article className="filter">
             <h3>Filter Yarn by...</h3>
             <select className="initial-dropdown" onChange={e=>setMenuSelection(e.target.value)}>
                 <option value="">Choose a filter</option>
@@ -85,6 +87,11 @@ export const WelcomeScreen = ({weightChoice, setWeightChoice, colorChoice, setCo
             ):(
                 ""
             )}
+            <img className="kitten" src="./images/kittenYarn.png" />
+            </article>
+            
+            <img className="yarn-wall" src="https://t3.ftcdn.net/jpg/02/11/27/44/360_F_211274437_jw4zj9wtsgw6eMGqA9en3gbh6DBwdlLC.jpg" alt="yarn-wall"/> 
+            </div>
         </section> 
     )
 

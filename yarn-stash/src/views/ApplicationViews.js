@@ -11,6 +11,7 @@ import { UserProfile } from "../components/user/user.js"
 import { UserForm } from "../components/user/updateUser.js"
 import { EditYarn } from "../components/yarn/EditYarn.js"
 import { YarnDetails } from "../components/yarn/YarnDetails.js"
+import "./views.css"
 
 
 export const ApplicationViews = () => {

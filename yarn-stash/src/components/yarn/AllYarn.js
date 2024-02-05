@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react"
-import { getAllYarns, getYarnByUserId } from "../services/yarnService.js"
+import { getAllYarns } from "../services/yarnService.js"
 import "./yarn.css"
 import { useNavigate } from "react-router-dom"
 
 export const AllYarn = ({currentUser}) => {
     const [showAllYarns, setShowAllYarns] = useState([])
-    const [userYarns, setUserYarns] = useState([])
     const [filteredYarns, setFilteredYarns] = useState([])
     const [searchTerm, setSearchTerm] = useState("")
     const navigate = useNavigate()
