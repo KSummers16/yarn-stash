@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import { getUserByEmail } from "../services/userService.js"
+import "./login.css"
 
 export const Login = () => {
     const [email, set] = useState("")
@@ -30,9 +31,12 @@ export const Login = () => {
     }
 
     return (
-        <main className="auth-container">
-            <section>
-                <form className="auth-form" onSubmit={handleLogin}>
+        <body className="yarn-login">
+            <div className="yarn-login">
+                <div className="auth-form">
+                <form onSubmit={handleLogin}>
+                    
+                    
                     <h1 className="header">Welcome to Yarn Stash!</h1>
                     <h2>Please Sign in Here</h2>
                     <fieldset className="auth-fieldset">
@@ -53,10 +57,14 @@ export const Login = () => {
                         </div>
                     </fieldset>
                 </form>
+                <section className="register-link">
+             <Link to="/register">Not a member yet?</Link>
             </section>
-            <section className="register-link">
-        <Link to="/register">Not a member yet?</Link>
-      </section>
-        </main>
+            </div>
+            </div>
+            
+            
+      <div className="att">image by freepik</div>
+        </body>
     )
 }

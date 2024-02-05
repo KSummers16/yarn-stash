@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { deleteTheYarn, getYarnByYarnId } from "../services/yarnService.js"
+import "./yarn.css"
 
 
 export const YarnDetails = () => {
@@ -24,7 +25,7 @@ export const YarnDetails = () => {
     
     return (
         <>
-        
+        <h2 className="title">Yarn Details</h2>
         <div className="yarn-details-info">Brand: {yarnDetails.company?.name}</div>
                             <div className="yarn-details-info">Line: {yarnDetails.name}</div>
                             <div className="yarn-details-info">{yarnDetails.color}</div>

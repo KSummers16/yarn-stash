@@ -43,13 +43,13 @@ export const WelcomeScreen = ({weightChoice, setWeightChoice, colorChoice, setCo
 
     return (
         <section className="main">
-            <h1>Welcome to Yarn Stash!</h1>
+            <h1 className="title">Welcome to Yarn Stash!</h1>
                 <p className="intro">This is a special place for anyone that deals with yarn crafts! Keep track on how much yarn you have at home so you always know what's on hand.</p>
 
 
             <div className="filter-box">
                 <article className="filter">
-            <h3>Filter Yarn by...</h3>
+            <h3 className="title">Filter Yarn by...</h3>
             <select className="initial-dropdown" onChange={e=>setMenuSelection(e.target.value)}>
                 <option value="">Choose a filter</option>
                 <option value="weight">Weight</option>

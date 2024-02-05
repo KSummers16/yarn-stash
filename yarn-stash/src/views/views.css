@@ -1,7 +1,17 @@
 .main {
     padding: 20px;
+    
 }
 
+.intro {
+    font-family: 'Single Day';
+    font-size: large;
+}
+
+.title {
+    font-family: 'Pacifico';
+    font-size: xx-large;
+}
 
 .filter-box {
     display: flex;

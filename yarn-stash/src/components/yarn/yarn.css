@@ -1,14 +1,61 @@
+#root {
+    display: grid;
+}
+
+.title {
+    font-family: 'Pacifico';
+    font-size: x-large;
+}
+
+.searchBar {
+    display: grid;
+    justify-self: center;
+}
+
 .yarnContainer{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    flex-direction: row;
+    font-family: 'Single Day';
+    font-size: x-large;
 }
+
+
+.yarnCard {
+    /* border-image: src="./images/borderyarn.jpeg" */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.search-bar {
+    display: flex;
+    box-shadow: 5px 5px 15px 5px lightcoral;
+    margin: 30px;
+}
+
+.search-input {
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    margin: 30px;
+    box-shadow: 5px 5px 15px 5px lightcoral;
+    width: 150px;
+    
+}
+
+searchBar {
+    display: grid;
+}
+
 
 .yarnDetails {
     justify-content: space-between;
     border: 1px solid black;
     margin: 10px;
-    width: 250px
+    width: 300px;
+    padding: 5px;
 
 }
 

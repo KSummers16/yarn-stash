@@ -34,8 +34,10 @@ export const AllYarn = ({currentUser}) => {
 
     return (
         <>
+        <h2 className="title">Show All Yarn</h2>
         <div className="searchBar">
             <input
+            className="search-bar"
             onChange={(event)=>{
                 setSearchTerm(event.target.value)
             }}
@@ -48,12 +50,12 @@ export const AllYarn = ({currentUser}) => {
                 {filteredYarns.map(yarn => {
                     return (<div className="yarn" key={yarn.id}>
                         <div className="yarnDetails">
-                            <div className="yarn-details-info">Brand: {yarn.company.name}</div>
-                            <div className="yarn-details-info">Line: {yarn.name}</div>
-                            <div className="yarn-details-info">{yarn.color}</div>
-                            <div className="yarn-details-info">Color Palette: {yarn.colorFamily.name}</div>
-                            <div className="yarn-details-info">Weight: {yarn.weightId}-{yarn.weight.name}</div>
-                            <div className="yarn-details-info">Skeins: {yarn.amount}</div>
+                            <div className="yarn-details-info"><b>Brand:</b> {yarn.company.name}</div>
+                            <div className="yarn-details-info"><b>Line:</b> {yarn.name}</div>
+                            <div className="yarn-details-info"><b>Color Name: </b>{yarn.color}</div>
+                            <div className="yarn-details-info"><b>Color Palette:</b> {yarn.colorFamily.name}</div>
+                            <div className="yarn-details-info"><b>Weight:</b> {yarn.weightId}-{yarn.weight.name}</div>
+                            <div className="yarn-details-info"><b>Skeins:</b> {yarn.amount}</div>
                             <button onClick={()=>{navigate(`/yarns/${yarn.id}`)}}>Edit Yarn</button>
                         </div>
                     </div>)

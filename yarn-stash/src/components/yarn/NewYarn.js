@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { getAllColors, getAllCompanies, getAllWeights } from "../services/arrayService.js"
 import { SaveYarn } from "../services/yarnService.js"
+import "./yarn.css"
 
 export const AddNewYarn = ({currentUser}) => {
     const navigate = useNavigate()
@@ -38,16 +39,6 @@ export const AddNewYarn = ({currentUser}) => {
         })
     },[])
 
-    // const NewYarnCreated = (evt) => {
-    //     const {id, value} = evt.target;
-    //     const parsedValue= id === 'userId' ? parseInt(value, 10) : value.trim()
-    //         setYarn((prevYarn)=> ({
-    //             ...prevYarn,
-    //             [id]: id === 'userId' ? parseInt(value, 10): parsedValue,
-    //  }))
-
-    // }
-
 
     const NewYarnCreated = (evt) => {
         const { id, value } = evt.target;
@@ -70,7 +61,7 @@ export const AddNewYarn = ({currentUser}) => {
 
     return (<>
         <form className="form-new-yarn" onSubmit={handleSubmit}>
-            <h1>New Yarn</h1>
+            <h1 className="title">New Yarn</h1>
             <fieldset>
                 <div>
                     <select className="weight-menu" onChange={(e)=>NewYarnCreated({ target: { id: 'weightId', value: e.target.value}})}>

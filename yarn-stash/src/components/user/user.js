@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react"
 import { Link, useParams } from "react-router-dom"
 import { getUserByUserId } from "../services/userService.js"
+import {Cloudinary} from "@cloudinary/url-gen";
 
 
 export const UserProfile = ({currentUser}) => {
-   const [userProfile, setUserProfile] = useState({})
+    const cld = new Cloudinary({cloud: {cloudName: 'dkdnnhcdt'}});
+    const [userProfile, setUserProfile] = useState({})
 
     const { userId } = useParams()
     
@@ -29,6 +31,7 @@ export const UserProfile = ({currentUser}) => {
             <div className="user-info">Email</div>
             <div>{userProfile.email}</div>
         </div>
+        
         <Link to={`/update-user/${userId}`}><button>Update Profile</button></Link>
         </>
     )

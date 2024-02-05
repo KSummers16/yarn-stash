@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { getYarnByYarnId, updateYarn } from "../services/yarnService.js"
+import "./yarn.css"
 
 export const EditYarn = () => {
     const [yarn, setYarn] = useState({})
