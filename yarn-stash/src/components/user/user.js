@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { Link, useParams } from "react-router-dom"
 import { getUserByUserId } from "../services/userService.js"
 import {Cloudinary} from "@cloudinary/url-gen";
+import UploadWidget from "../UploadWidget.js";
 
 
 export const UserProfile = ({currentUser}) => {
@@ -33,6 +34,7 @@ export const UserProfile = ({currentUser}) => {
             <div className="user-title">Email</div>
             <div className="user-info">{userProfile.email}</div>
         </div>
+        <UploadWidget />
         <div className="user-info">
         <Link to={`/update-user/${userId}`}><button className="btn-fun">Update Profile</button></Link>
         
