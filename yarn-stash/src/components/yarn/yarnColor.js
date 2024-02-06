@@ -74,13 +74,13 @@ useEffect(()=>{
                     {showFilteredYarns.map(yarn => {
                         return (<div className="yarn" key={yarn.id}>
                             <div className="yarnDetails">
-                            <div className="yarn-details-info"><b>Brand:</b> {yarn.company.name}</div>
-                            <div className="yarn-details-info"><b>Line:</b> {yarn.name}</div>
-                            <div className="yarn-details-info"><b>Color Name:</b>{yarn.color}</div>
-                            <div className="yarn-details-info"><b>Color Palette:</b> {yarn.colorFamilyId}</div>
-                            <div className="yarn-details-info"><b>Weight:</b> {yarn.weightId}-{yarn.weight.name}</div>
-                            <div className="yarn-details-info"><b>Skeins:</b> {yarn.amount}</div>
-                            <button onClick={()=>{navigate(`/yarns/${yarn.id}`)}}>Edit Yarn</button>
+                            <div><b>Brand:</b> {yarn.company.name}</div>
+                            <div><b>Line:</b> {yarn.name}</div>
+                            <div><b>Color Name:</b>{yarn.color}</div>
+                            <div><b>Color Palette:</b> {yarn.colorFamilyId}</div>
+                            <div><b>Weight:</b> {yarn.weightId}-{yarn.weight.name}</div>
+                            <div><b>Skeins:</b> {yarn.amount}</div>
+                            <button className="btn-fun" onClick={()=>{navigate(`/yarns/${yarn.id}`)}}>Edit Yarn</button>
                             </div>
                         </div>)
                     })}

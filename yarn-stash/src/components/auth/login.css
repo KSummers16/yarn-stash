@@ -32,3 +32,16 @@ body {
     flex-wrap: wrap;
     align-content: flex-end;
 }
+
+.form-reg {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.register {
+    display: flex;
+    justify-self: center;
+    flex-direction: column;
+    align-items: center;
+}

@@ -57,7 +57,7 @@ export const EditYarn = () => {
             </fieldset>
             <fieldset>
                 <div>
-                    <button onClick={handleSave}>SaveYarn</button>
+                    <button className="btn-fun" onClick={handleSave}>SaveYarn</button>
                 </div>
             </fieldset>
         </form>

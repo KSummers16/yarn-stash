@@ -64,7 +64,7 @@ export const AddNewYarn = ({currentUser}) => {
             <h1 className="title">New Yarn</h1>
             <fieldset>
                 <div>
-                    <select className="weight-menu" onChange={(e)=>NewYarnCreated({ target: { id: 'weightId', value: e.target.value}})}>
+                    <select onChange={(e)=>NewYarnCreated({ target: { id: 'weightId', value: e.target.value}})}>
                         <option value="">Choose a Weight</option>
                         {weights.map(weight=>{
                             return <><option value={weight.id}>{weight.name}</option></>
@@ -74,7 +74,7 @@ export const AddNewYarn = ({currentUser}) => {
             </fieldset>
             <fieldset>
                 <div>
-                    <select className="company-menu" onChange={(e)=>NewYarnCreated({ target: { id: 'companyId', value: e.target.value}})}>
+                    <select onChange={(e)=>NewYarnCreated({ target: { id: 'companyId', value: e.target.value}})}>
                         <option value="">Choose a Brand</option>
                         {company.map(company=>{
                             return <><option value={company.id}>{company.name}</option></>
@@ -95,7 +95,7 @@ export const AddNewYarn = ({currentUser}) => {
             </fieldset>
             <fieldset>
                 <div>
-                    <select className="color-family" onChange={(e)=>NewYarnCreated({target: { id: 'colorFamilyId', value: e.target.value }})}>
+                    <select onChange={(e)=>NewYarnCreated({target: { id: 'colorFamilyId', value: e.target.value }})}>
                         <option value="">Choose a Color</option>
                         {color.map(color=>{
                             return <><option value={color.id}>{color.name}</option></>
@@ -127,7 +127,7 @@ export const AddNewYarn = ({currentUser}) => {
             </fieldset>
             <fieldset>
                 <div>
-                    <button className="newYarnBtn" type="submit">Submit</button>
+                    <button className="btn-fun" type="submit">Submit</button>
                 </div>
             </fieldset>
         </form>

@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { createUser, getUserByEmail } from "../services/userService.js"
+import "./login.css"
 
 export const Register = (props) => {
     const [user, setUser] = useState({
@@ -42,9 +43,10 @@ export const Register = (props) => {
 
     return (
         <main style={{textAlign: "center"}}>
-            <form className="form-login" onSubmit={handleRegister}>
-                <h1>YarnStash</h1>
-                <h2>Please Register</h2>
+            <form className="form-reg" onSubmit={handleRegister}>
+                <h1 className="title">YarnStash</h1>
+                <h2 className="title">Please Register</h2>
+                <div className="register">
                 <fieldset>
                     <div className="form-group">
                         <input
@@ -71,11 +73,12 @@ export const Register = (props) => {
                 </fieldset>
                 <fieldset>
                     <div className="form-group">
-                        <button className="login-btn btn-info" type="submit">
+                        <button className="btn-fun" type="submit">
                             Register
                         </button>
                     </div>
                 </fieldset>
+                </div>
             </form>
         </main>
     )

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getUserByUserId, updateUser } from "../services/userService.js"
 import { useNavigate } from "react-router-dom"
+import "./user.css"
 
 export const UserForm = ({currentUser})=> {
     const [user, setUser] = useState({})
@@ -31,10 +32,10 @@ export const UserForm = ({currentUser})=> {
     
     return (
         <form className="profile">
-            <h2>Update Profile</h2>
+            <h2 className="profile-title">Update Profile</h2>
             <fieldset>
                 <div className="form-group">
-                    <label>Name:</label>
+                    <label className="user-info">Name:</label>
                     <input
                     type="text"
                     placeholder={currentUser.name}
@@ -50,7 +51,7 @@ export const UserForm = ({currentUser})=> {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label>Email:</label>
+                    <label className="user-info">Email:</label>
                     <input
                     type="email"
                     placeholder={currentUser.email}
@@ -65,7 +66,7 @@ export const UserForm = ({currentUser})=> {
             </fieldset>
             <fieldset>
                 <div>
-                <button className="form-btn btn-primary" onClick={handleSave}>Save Profile</button>
+                <button className="form-btn btn-fun" onClick={handleSave}>Save Profile</button>
                 </div>
             </fieldset>
         </form>

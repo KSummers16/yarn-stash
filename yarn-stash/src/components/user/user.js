@@ -23,16 +23,21 @@ export const UserProfile = ({currentUser}) => {
     
     return (
         <>
-        <div>
-            <div className="user-info">Name</div>
-            <div>{userProfile.name}</div>
-        </div>
-        <div>
-            <div className="user-info">Email</div>
-            <div>{userProfile.email}</div>
-        </div>
+        <h2 className="title">Profile Page</h2>
+        <section className="profile-box">
+            
+            <div className="user-title">Name</div>
+            <div className="user-info">{userProfile.name}</div>
         
-        <Link to={`/update-user/${userId}`}><button>Update Profile</button></Link>
+        <div>
+            <div className="user-title">Email</div>
+            <div className="user-info">{userProfile.email}</div>
+        </div>
+        <div className="user-info">
+        <Link to={`/update-user/${userId}`}><button className="btn-fun">Update Profile</button></Link>
+        
+        </div>
+        </section>
         </>
     )
 }

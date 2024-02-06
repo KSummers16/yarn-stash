@@ -26,17 +26,19 @@ export const YarnDetails = () => {
     return (
         <>
         <h2 className="title">Yarn Details</h2>
-        <div className="yarn-details-info">Brand: {yarnDetails.company?.name}</div>
-                            <div className="yarn-details-info">Line: {yarnDetails.name}</div>
-                            <div className="yarn-details-info">{yarnDetails.color}</div>
-                            <div className="yarn-details-info">Color Palette: {yarnDetails.colorFamily?.name}</div>
-                            <div className="yarn-details-info">Weight: {yarnDetails.weightId}-{yarnDetails.weight?.name}</div>
-                            <div className="yarn-details-info">Skeins: {yarnDetails.amount}</div>
+        <div className="yarn-details-info">
+        <div>Brand: {yarnDetails.company?.name}</div>
+                            <div>Line: {yarnDetails.name}</div>
+                            <div>{yarnDetails.color}</div>
+                            <div>Color Palette: {yarnDetails.colorFamily?.name}</div>
+                            <div>Weight: {yarnDetails.weightId}-{yarnDetails.weight?.name}</div>
+                            <div>Skeins: {yarnDetails.amount}</div>
         
-        <Link to={`/edit-yarn/${yarnId}`}><button>Update Yarn</button></Link>
+        
+        <Link to={`/edit-yarn/${yarnId}`}><button className="btn-fun">Update Yarn</button></Link>
 
-        <button className="delete-btn btn-warning" onClick={()=>{deleteTheYarn(yarnId).then(()=>{navigate('/')})}}>Delete</button>
-
+        <button className="delete-btn btn-warning" onClick={()=>{deleteTheYarn(yarnId).then(()=>{navigate('/')})}}>Delete Yarn</button>
+        </div>
         </>
         
     )
