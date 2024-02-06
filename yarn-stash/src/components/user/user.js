@@ -1,13 +1,12 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Link, useParams } from "react-router-dom"
 import { getUserByUserId } from "../services/userService.js"
-import {Cloudinary} from "@cloudinary/url-gen";
 import UploadWidget from "../UploadWidget.js";
 
 
 export const UserProfile = ({currentUser}) => {
-    const cld = new Cloudinary({cloud: {cloudName: 'dkdnnhcdt'}});
     const [userProfile, setUserProfile] = useState({})
+    const containerRef = useRef(null)
 
     const { userId } = useParams()
     
@@ -20,6 +19,24 @@ export const UserProfile = ({currentUser}) => {
         })
     },[userId])
   
+    useEffect(()=>{
+        if (window && containerRef.current){
+            window.cloudinary
+            .galleryWidget({
+                container: containerRef.current,
+                cloudName: 'yarn-stash',
+                mediaAssets:[
+                    {tag: 'knitting'},
+                    {tag: 'crochet' },
+                    {tag: 'work in progress'},
+                    {tag: 'amigurumi'},
+                    {tag: 'yarn'}
+
+                ],
+            })
+            .render();
+        }
+    },[containerRef])
    
     
     return (
@@ -39,7 +56,9 @@ export const UserProfile = ({currentUser}) => {
         <Link to={`/update-user/${userId}`}><button className="btn-fun">Update Profile</button></Link>
         
         </div>
+
         </section>
+        <div ref={containerRef} style={{width:'400px', height:'4000px', margin:'auto'}}/>
         </>
     )
 }

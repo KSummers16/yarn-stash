@@ -114,6 +114,9 @@ btn-warning:hover {
 
     
 .btn-fun {
+        display: flex;
+        align-self: center;
+        width: 150px;
         color: rgb(0, 0, 0); font-size: 14px; line-height: 14px; padding: 8px; border-radius: 25px; font-family: Georgia, serif; font-weight: normal; text-decoration: none; font-style: normal; font-variant: normal; text-transform: none; background-image: radial-gradient(rgb(255, 255, 255) 0%, rgb(255, 195, 251) 46%, rgb(255, 255, 255) 100%); box-shadow: rgba(0, 0, 0, 0.04) 5px -3px 32px 26px; border: 9px double rgb(156, 37, 164); display: inline-block;}
 
 btn-fun:hover {
