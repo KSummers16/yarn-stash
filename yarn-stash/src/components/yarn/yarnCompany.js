@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom"
 import "./yarn.css"
 
 export const YarnCompany = ({companyChoice, currentUser}) => {
-    const [allYarns, setAllYarns] = useState([])
-    const [filterYarns, setFilterYarns] = useState(0)
+    const [userYarns, setUserYarns] = useState([])
+    // const [filterYarns, setFilterYarns] = useState(0)
     const [showFilteredYarns, setShowFilteredYarns]= useState([])
     const [allCompanyOptions, setAllCompanyOptions]= useState([])
     const [newCompanyChoice, setNewCompanyChoice]= useState(0)
@@ -23,39 +23,20 @@ export const YarnCompany = ({companyChoice, currentUser}) => {
         if (currentUser){
             getAllYarns().then(yarnArray=>{
                 const userYarns = yarnArray.filter(yarn=>yarn.userId===currentUser.id)
-                setAllYarns(userYarns)
+                setUserYarns(userYarns)
             })
         }
     },[currentUser])
     
-
     useEffect(()=>{
-        setFilterYarns(newCompanyChoice)
-    },[newCompanyChoice])
-
-    useEffect(()=>{
-        if (newCompanyChoice){
-            getAllYarns().then(yarnArray=>{
-                const yarnCompany = yarnArray.filter(yarn=>yarn.companyId===filterYarns)
-                setShowFilteredYarns(yarnCompany)
+        if (companyChoice || newCompanyChoice) {
+            const yarnCompany = userYarns.filter(yarn=>{
+                return(!companyChoice || yarn.companyId === companyChoice) && 
+                (!newCompanyChoice || yarn.companyId === newCompanyChoice)
             })
+            setShowFilteredYarns(yarnCompany)
         }
-    },[newCompanyChoice])
-
-    useEffect(()=> {
-        setFilterYarns(companyChoice)
-    },[companyChoice])
-
-
-    useEffect(()=>{
-        if (companyChoice){
-            getAllYarns().then(yarnArray=>{
-            const yarnWeight = yarnArray.filter(yarn=>yarn.companyId===filterYarns)
-            setShowFilteredYarns(yarnWeight)
-        })
-        }
-    },[filterYarns, companyChoice])
-
+    },[companyChoice, newCompanyChoice, userYarns])
 
     return (<>
     <h2 className="title">Sort Yarn by Brand</h2>
