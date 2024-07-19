@@ -1,11 +1,19 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const UploadWidget = () => {
+    const [currentUser, setCurrentUser] = useState([],)
  const cloudinaryRef = useRef()
  const widgetRef = useRef()
 
- const tags = ["amigurumi", "work in progress", "knitting", "crochet", "yarn"]
- const getMyTags = (cb, prefix) => cb(prefix ? tags.filter((t)=> !t.indexOf(prefix)):tags)
+ useEffect(()=>{
+    const localYarnUser = localStorage.getItem("yarn_user")
+    const yarnUserObject= JSON.parse(localYarnUser)
+
+    setCurrentUser(yarnUserObject)
+},[])
+
+
+
 
  useEffect(()=>{
     cloudinaryRef.current = window.cloudinary;
@@ -13,9 +21,11 @@ const UploadWidget = () => {
         cloudName: 'yarn-stash',
         uploadPreset: 'h1yzgepe',
         showAdvancedOptions: true,
-        getTags:getMyTags,
+        tags: [currentUser.name],
     }, function(error, result){
-        console.log(result)
+        if (result === "close"){
+            
+        }
     })
  },[])
 

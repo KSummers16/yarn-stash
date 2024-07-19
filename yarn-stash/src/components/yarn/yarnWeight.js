@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"
 import "./yarn.css"
 
 export const YarnWeight = ({weightChoice, currentUser}) => {
-    const [allYarns, setAllYarns] = useState([])
+    const [userYarns, setUserYarns] = useState([])
     const [allWeights, setAllWeights] = useState([])
     const [filterYarns, setFilterYarns] = useState(0)
     const [showFilteredYarns, setShowFilteredYarns]= useState([])
@@ -26,42 +26,22 @@ export const YarnWeight = ({weightChoice, currentUser}) => {
     if (currentUser){
         getAllYarns().then(yarnArray=>{
             const userYarns = yarnArray.filter(yarn=>yarn.userId===currentUser.id)
-            setAllYarns(userYarns)
+            setUserYarns(userYarns)
         })
     }
 },[currentUser])
 
-
-
-    useEffect(()=>{
-        setFilterYarns(newWeightChoice)
-    },[newWeightChoice])
-       
-        
-    useEffect(()=>{
-        if (newWeightChoice) {
-            getAllYarns().then(yarnArray=>{
-                const yarnWeight = yarnArray.filter(yarn=>yarn.weightId===filterYarns)
-                setShowFilteredYarns(yarnWeight)
+ useEffect(()=>{
+    if (weightChoice || newWeightChoice) {
+        const yarnWeight = userYarns.filter(yarn=>{
+            return(!weightChoice || yarn.weightId === weightChoice) &&
+            (!newWeightChoice || yarn.weightId === newWeightChoice)
         })
+        setShowFilteredYarns(yarnWeight)
     }
-    },[newWeightChoice])
+ },[weightChoice, newWeightChoice, userYarns])
 
-
-    useEffect(()=> {
-        setFilterYarns(weightChoice)
-    },[weightChoice])
-
-
-    useEffect(()=>{
-        if (weightChoice){
-            getAllYarns().then(yarnArray=>{
-            const yarnWeight = yarnArray.filter(yarn=>yarn.weightId===filterYarns)
-            setShowFilteredYarns(yarnWeight)
-        })
-        }
-    },[filterYarns, weightChoice])
-
+   
 
     return (<>
     <h2 className="title">Sort Yarn by Weight</h2>

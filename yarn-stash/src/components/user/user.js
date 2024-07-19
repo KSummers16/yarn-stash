@@ -18,24 +18,24 @@ export const UserProfile = ({currentUser}) => {
             setUserProfile(dataArr)
         })
     },[userId])
-  
-    useEffect(()=>{
+
+    const getNewPics = () => {
         if (window && containerRef.current){
             window.cloudinary
             .galleryWidget({
                 container: containerRef.current,
                 cloudName: 'yarn-stash',
-                mediaAssets:[
-                    {tag: 'knitting'},
-                    {tag: 'crochet' },
-                    {tag: 'work in progress'},
-                    {tag: 'amigurumi'},
-                    {tag: 'yarn'}
-
-                ],
+                mediaAssets: [
+                    {tag: currentUser.name}
+                ]
+                ,
             })
             .render();
         }
+    }
+  
+    useEffect(()=>{
+        getNewPics()
     },[containerRef])
    
     

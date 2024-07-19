@@ -22,10 +22,12 @@ export const AllYarn = ({currentUser}) => {
 
     useEffect(()=>{
         const foundYarns = showAllYarns.filter(yarn=>
+            yarn.company.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
             yarn.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-            yarn.color.toLowerCase().includes(searchTerm.toLowerCase() ||
-            yarn.colorFamily.name.toLowerCase().includes(searchTerm.toLowerCase())
-            )
+            yarn.color.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            yarn.colorFamily.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            yarn.weight.name.toLowerCase().includes(searchTerm.toLowerCase()) 
+            
         )
         setFilteredYarns(foundYarns)
     },[searchTerm, showAllYarns])

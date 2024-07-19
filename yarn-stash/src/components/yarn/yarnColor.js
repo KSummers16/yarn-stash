@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom"
 
 
 export const YarnColor = ({colorChoice, currentUser}) => {
-    const [allYarns, setAllYarns] = useState([])
-    const [filterYarns, setFilterYarns] = useState(0)
+    const [userYarns, setUserYarns]= useState([])
+    // const [filterYarns, setFilterYarns] = useState(0)
     const [showFilteredYarns, setShowFilteredYarns]= useState([])
     const [allColorOptions, setAllColorOptions] = useState([])
     const [newColorChoice, setNewColorChoice] = useState(0)
@@ -25,40 +25,23 @@ export const YarnColor = ({colorChoice, currentUser}) => {
         if (currentUser){
             getAllYarns().then(yarnArray=>{
                 const userYarns = yarnArray.filter(yarn=>yarn.userId===currentUser.id)
-                setAllYarns(userYarns)
+                setUserYarns(userYarns)
             })
         }
     },[currentUser])
     
-
-useEffect(()=>{
-    setFilterYarns(newColorChoice)
-},[newColorChoice])
-   
     
 useEffect(()=>{
-    if (newColorChoice) {
-        getAllYarns().then(yarnArray=>{
-            const yarnColor = yarnArray.filter(yarn=>yarn.colorFamilyId===filterYarns)
-            setShowFilteredYarns(yarnColor)
-    })
-}
-},[newColorChoice])
-
-    useEffect(()=> {
-        setFilterYarns(colorChoice)
-    },[colorChoice])
-
-
-    useEffect(()=>{
-        if (colorChoice){
-            getAllYarns().then(yarnArray=>{
-            const yarnColor = yarnArray.filter(yarn=>yarn.colorFamilyId===filterYarns)
-            setShowFilteredYarns(yarnColor)
+    if (colorChoice || newColorChoice) {
+        const yarnColor = userYarns.filter(yarn=>{
+            return(!colorChoice || yarn.colorFamilyId === colorChoice) &&
+            (!newColorChoice || yarn.colorFamilyId === newColorChoice)
         })
-        }
-    },[filterYarns, colorChoice])
+        setShowFilteredYarns(yarnColor)
+}
+},[colorChoice, newColorChoice, userYarns])
 
+  
     return (<>
     <h2 className="title">Sort Yarn by Color Palette</h2>
         <select className="search-input" onChange={e=>setNewColorChoice(parseInt(e.target.value))}>
